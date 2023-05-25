@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar ">
+            <div class="container">
+                <a class="navbar-brand fs-3"><b>PODCA</b></a>
+                <form class="d-flex">
+                    <i class="las la-bars fs-1"></i>
+                </form>
+            </div>
+        </nav>
+        <div class="Episode-09 p-5">
+            <span class="col-lg-7 d-block">Episode 09: How To Create Web Page Using Bootstrap 4</span>
+            <p class="d-block">By Mike Smith | 16 September 2017 | 1:30:20</p>
+            <button class="button-5" role="button">READ THE TRANSCRIPT</button>
+        </div>
+    </header>
+    <section id="podcasts">
+        <div class="container">
+            <b class="fs-3">Recent Podcasts</b>
+            <div class="row podcasts p-5 ">
+            </div>
+        </div>
+    </section>
+    <section id="behind">
+        <div class="container">
+            <div class="row">
+                <b class="p-5 fs-2">Behind The Mic</b>
+                <img src="https://preview.colorlib.com/theme/podca/images/person_1.jpg" class="rounded col-lg-4 d-block"
+                    alt="...">
+                <img src="https://preview.colorlib.com/theme/podca/images/person_2.jpg" class="rounded col-lg-4 d-block"
+                    alt="...">
+                <img src="https://preview.colorlib.com/theme/podca/images/person_3.jpg" class="rounded col-lg-4 d-block"
+                    alt="...">
+                <img src="https://preview.colorlib.com/theme/podca/images/person_4.jpg"
+                    class="rounded col-lg-4 d-block mt-4" alt="...">
+                <img src="https://preview.colorlib.com/theme/podca/images/person_5.jpg"
+                    class="rounded col-lg-4 d-block mt-4" alt="...">
+                <img src="https://preview.colorlib.com/theme/podca/images/person_6.jpg"
+                    class="rounded col-lg-4 d-block mt-4" alt="...">
+            </div>
+        </div>
+    </section>
+    <section id="guests">
+        <div class="container">
+            <b class="fs-2 p-5">Behind The Mic</b>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col-lg-4 img1 p-5 ms-2">
+                    <img src="https://preview.colorlib.com/theme/podca/images/person_1.jpg" class="mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem, ipsum.</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a li</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 img1 p-5 ms-4">
+                    <img src="https://preview.colorlib.com/theme/podca/images/person_2.jpg" class="mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem, ipsum.</h5>
+                        <p class="card-text">This card has supporting text below supporting text below as a natural
+                            below as a natural lead-in to add</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 img1 p-5 ms-4 col-sm-none">
+                    <img src="https://preview.colorlib.com/theme/podca/images/person_3.jpg" class="mx-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Lorem, ipsum.</h5>
+                        <p class="card-text">This is a wider card has even longer content than the first to show that
+                            equa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="container text-center">
+            <p class="fs-5">Copyright ©2023 All rights reserved | This template is made with by Colorlib</p>
+        </div>
+    </section>
+
+    <script>
+        function getDatas() {
+            fetch('https://646fbd4d09ff19b12087b806.mockapi.io/cards')
+                .then(res => res.json())
+                .then(data => {
+                    const card = document.querySelector('.podcasts');
+                    card.innerHTML = '';
+                    data.forEach(el => {
+                        card.innerHTML += `
+                    <div class="mb-3" style="background-color: white">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="${el.image}" class="img-fluid " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title mt-5 text-danger">${el.name}</h5>
+                                <p class="card-text mt-3">${el.date}</p>
+                                <p class="card-text mt-5"><small class="text-muted">${el.text}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    `
+                    })
+                }).catch(() => console.log('error'))
+        }
+        getDatas();
+
+    </script>
+</body>
+
+</html>
